@@ -1,8 +1,13 @@
 import React from 'react'
-
+import Contact from './components/Contact'
 function App() {
+  const alertMessage = () => {
+    alert('Alert from another page')
+  }
   return (
-    <div>This is my first React Application</div>
+    <>
+    <Contact testdata="hello" alertMessage = {alertMessage}/>
+    </>
   )
 }
 

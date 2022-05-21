@@ -15,6 +15,12 @@ root.render(element)
 
 ### react-scripts
 
+```javascript
+"scripts": {
+    "start": "react-scripts start"
+  },
+```
+
 > In programming, a script is a list of instructions that dictates what to do to another program; React is no exception.
 
 * In React apps, scripts are located in the package.json file’s script section
@@ -40,3 +46,8 @@ root.render(element)
 ``PORT=5000 npm start``
 
 ##### StrictMode is a React Developer Tool primarily used for highlighting possible problems in a web application
+
+### invoke function
+
+* onClick={alertMessage}
+* onClick={alertMessage()} //invoked automatically
