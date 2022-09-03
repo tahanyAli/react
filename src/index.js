@@ -1,11 +1,46 @@
-import React from "react";
-import ReactDom from "react-dom/client";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import SeasonDisplay from './SeasonDisplay';
 
-
-const root = ReactDom.createRoot(document.getElementById('root'))
-root.render(
-     <React.StrictMode>
-         <App />
-    </React.StrictMode>
-)
+class App extends React.Component {
+    // constructor(props){
+        // super(props);
+        // this.state = {
+        //     lat: null,
+        //     long: null,
+        //     errorMsg: ''
+        // };
+    // }
+    state = {lat: null, long: null, errorMsg: ''};
+    componentDidMount() {
+        
+        window.navigator.geolocation.getCurrentPosition(
+            position => {
+                this.setState({
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude
+                });
+                // console.log(position)
+            },
+            err => {
+                this.setState({errorMsg: err.message});
+            }
+        );
+        console.log("my component was rendered to the screen ")
+    }
+    componentDidUpdate() {
+        console.log("my component was just updated - it rerendered ")
+    }
+    render() {
+        if (this.state.errorMsg && !this.state.lat) {
+            return <div>Error:  {this.state.errorMsg} </div>
+        }
+        if (!this.state.errorMsg && this.state.lat){
+            return <SeasonDisplay lat={this.state.lat} />
+        }
+        return <div>Loading</div>
+    }
+}
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
