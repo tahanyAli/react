@@ -17,9 +17,12 @@ const Search = () => {
       });
       setResults(data.query.search);//rerender component
     }
-    if(term) {
-      searchW();
-    }
+    setTimeout(() => {
+      if(term) {
+        searchW();
+      }
+    }, 500);
+    
   }, [term]);
 
   const renderedResults = results.map((result) => {
