@@ -51,3 +51,9 @@ root.render(element)
 
 * onClick={alertMessage}
 * onClick={alertMessage()} //invoked automatically
+
+## Redux Cycle
+
+Action Creator => Action => dispatch => Reducers => State.
+
+Person dropping off the form => the form => form reciver => departments => compiled department data
